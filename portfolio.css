@@ -1,0 +1,46 @@
+
+nav{ border-radius: 0px !important;
+    margin-bottom: -20px !important;
+  }
+.div1{ padding-top: 20px;
+    padding-bottom: 50px;
+    background-color:grey;
+    color: rgb(68, 3, 3);
+    
+}
+h1{padding-top: 20px;
+    padding-bottom: 5px;}
+
+h3,h4{padding-bottom: 10px;}
+#dev{   padding: 20px;
+    box-shadow: 2px 2px 5px 5px;
+        background-color:hsl(0, 91%, 9%);
+          box-shadow: inset 2px 2px 14px 11px;
+          color:whitesmoke;
+    }
+span{
+    background-color:blue;
+}
+#deva{   padding: 20px;
+    
+    box-shadow: 2px 2px 5px 5px;
+    background-color: hsla(60, 13.8%, 25.5%, 0.81);
+          box-shadow: inset 2px 2px 14px 11px;
+          color:whitesmoke;
+    }
+    #vis{
+        background-color: bisque;
+    }
+    #icon{
+        background-color: black;
+        float: right;
+        padding-right: 10px;
+        font-size: 20px;
+    }
+    .fix{
+        position: fixed;
+        top:0px;
+        width: 100%;
+        z-index: 1;
+
+    }
