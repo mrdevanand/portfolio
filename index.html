@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Devanand Borhade — Portfolio</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --water-1: #0ea5a3;
+      --water-2: #0077ff;
+      --glass: rgba(255,255,255,0.06);
+      --accent: #00eaff;
+      --muted: rgba(255,255,255,0.7);
+    }
+
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Poppins",sans-serif;
+      background: linear-gradient(180deg, #00121a 0%, #002a3a 100%);
+      color:#e9f8ff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* NAV */
+    .navbar{
+      background: linear-gradient(90deg, rgba(7,40,56,0.55), rgba(2,20,30,0.55));
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .navbar-brand{ color:var(--accent); font-weight:700 }
+    .nav-link{ color: #dff7ff !important; font-weight:600 }
+    .nav-link:hover{ color: #fff !important; text-shadow:0 0 8px rgba(0,255,255,0.08) }
+
+    /* HERO */
+    .hero {
+      position:relative;
+      min-height:85vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:3rem 1rem;
+      overflow:hidden;
+    }
+    .hero-inner{
+      max-width:1100px;
+      z-index:5;
+    }
+    .hero h1{ font-size:3rem; letter-spacing:0.5px; margin-bottom:0.35rem; color:#e9fbff; text-shadow:0 6px 40px rgba(0,160,200,0.12)}
+    .hero .role{ font-size:1.1rem; color:var(--muted); margin-bottom:1rem }
+    .tagline{ font-size:1.05rem; color:#d8f6ff; opacity:0.95 }
+
+    /* Typing */
+    .typing { color:var(--accent); font-weight:700; }
+
+    /* Wave background (animated) */
+    .wave-wrap{
+      position:absolute; left:0; right:0; bottom:-2px; height:35vh; overflow:hidden; z-index:2;
+      filter: blur(10px) saturate(110%);
+      opacity:0.9;
+    }
+    .wave{
+      position:absolute; width:200%; height:100%; left:-50%;
+      background: radial-gradient(closest-side, rgba(0,255,255,0.03), transparent 40%), linear-gradient(90deg,var(--water-1),var(--water-2));
+      transform-origin:center;
+      animation: waveMove 14s linear infinite;
+      mix-blend-mode:screen;
+    }
+    @keyframes waveMove{
+      0%{ transform:translateX(0) translateY(0) rotate(0deg) }
+      50%{ transform:translateX(-8%) translateY(6px) rotate(1deg) }
+      100%{ transform:translateX(0) translateY(0) rotate(0deg) }
+    }
+    /* small translucent overlay shapes */
+    .bubble{
+      position:absolute; width:140px; height:140px; border-radius:50%;
+      background:rgba(255,255,255,0.03); box-shadow:0 10px 40px rgba(0,50,100,0.10);
+      z-index:1;
+    }
+    .b1{ left:5%; top:10% }
+    .b2{ right:6%; top:15% }
+    .b3{ left:12%; bottom:12% }
+
+    /* GLASS SECTION */
+    .glass {
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 40px rgba(2,20,30,0.6);
+      backdrop-filter: blur(8px) saturate(120%);
+    }
+
+    .profile-img{
+      width:170px; height:170px; object-fit:cover; border-radius:50%;
+      border:3px solid rgba(255,255,255,0.08);
+      box-shadow:0 0 30px rgba(0,120,200,0.12);
+    }
+
+    /* Sections */
+    section{ padding:4.5rem 0; }
+    .section-title{
+      font-weight:700; color:var(--accent); margin-bottom:1.6rem; text-align:center;
+      letter-spacing:0.6px;
+    }
+
+    /* Skills grid */
+    .skill-name{ font-weight:600; color:#e6fbff; }
+    .skill-bar{ height:10px; border-radius:10px; background:rgba(255,255,255,0.06); overflow:hidden }
+    .skill-fill{ height:100%; border-radius:10px; background: linear-gradient(90deg, #00eaff, #0077ff); box-shadow: 0 4px 14px rgba(0,120,255,0.12) }
+
+    /* AWS/DevOps badges */
+    .badge-aws{
+      background: linear-gradient(135deg,#ffb74d,#ff9900);
+      color:#001217; font-weight:700; padding:6px 10px; border-radius:8px; margin-right:8px;
+      box-shadow:0 6px 22px rgba(255,150,50,0.12);
+    }
+
+    .devops-list li{ margin-bottom:8px }
+
+    /* Projects */
+    .project-card{ transition: transform .28s ease, box-shadow .28s ease; }
+    .project-card:hover{ transform: translateY(-6px); box-shadow:0 18px 50px rgba(0,30,60,0.35) }
+
+    /* Contact */
+    .contact-card{ max-width:760px; margin:0 auto; }
+
+    footer{ padding:18px 0; text-align:center; color:rgba(255,255,255,0.6); border-top:1px solid rgba(255,255,255,0.02) }
+
+    /* responsive tweaks */
+    @media(max-width:600px){
+      .hero h1{ font-size:2.2rem }
+      .profile-img{ width:140px; height:140px }
+    }
+
+    /* subtle float-in */
+    .float-up{ transform: translateY(8px); opacity:0; animation: floatUp .9s ease forwards; }
+    .float-up.delay{ animation-delay:.18s }
+    @keyframes floatUp{ to{ transform:none; opacity:1 } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Devanand B.</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"><i class="fa-solid fa-bars" style="color:#fff"></i></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#devops">AWS / DevOps</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-3">
+            <a class="btn btn-sm" href="resume.pdf" download style="background:linear-gradient(90deg,#00eaff,#0077ff); color:#001217; font-weight:700; border-radius:10px;">
+              <i class="fa-solid fa-download"></i> Resume
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner container" data-aos="fade-up">
+      <img src="deva.JPG" alt="profile" class="profile-img mb-3 float-up" style="display:block;margin:0 auto;">
+      <h1 class="float-up delay">Hi, I'm <span style="color:var(--accent)">Devanand Borhade</span></h1>
+      <p class="role float-up delay">Jr. Software Developer — <span class="typing" id="typing"></span></p>
+
+      <div class="mt-3 d-flex justify-content-center gap-3 float-up" style="margin-top:1.2rem">
+        <a href="#projects" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06); color:#e9fbff; border-radius:10px; padding:10px 18px;">View Projects</a>
+        <a href="#contact" class="btn" style="background:linear-gradient(90deg,#00eaff,#0077ff); color:#001217; font-weight:700; border-radius:10px; padding:10px 18px;">
+          <i class="fa-solid fa-envelope"></i> Hire Me
+        </a>
+      </div>
+    </div>
+
+    <!-- water wave + shapes -->
+    <div class="wave-wrap" aria-hidden="true">
+      <div class="wave" style="opacity:0.9"></div>
+    </div>
+    <div class="bubble b1"></div>
+    <div class="bubble b2"></div>
+    <div class="bubble b3"></div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="glass p-4" data-aos="fade-right">
+        <div class="row align-items-center">
+          <div class="col-md-4 text-center">
+            <img src="deva.JPG" alt="profile" class="profile-img mb-3">
+          </div>
+          <div class="col-md-8">
+            <p>I build clean frontends and scalable backends. I enjoy solving problems with code and automating tasks for reliability. Currently exploring cloud-native patterns, CI/CD and container orchestration.</p>
+            <div class="row">
+              <div class="col-sm-6">
+                <ul class="list-unstyled mb-0">
+                  <li><strong>Qualification:</strong> BE (Mechanical), 2022</li>
+                  <li><strong>Age:</strong> 23</li>
+                  <li><strong>DOB:</strong> 28 Feb 1999</li>
+                </ul>
+              </div>
+              <div class="col-sm-6">
+                <ul class="list-unstyled mb-0">
+                  <li><strong>Contact:</strong> 9112407590</li>
+                  <li><strong>City:</strong> Pune</li>
+                  <li><strong>Email:</strong> vishalborhade3831@gmail.com</li>
+                </ul>
+              </div>
+            </div>
+            <div class="mt-3">
+              <a class="btn btn-sm" href="https://github.com/" target="_blank" style="background:transparent;border:1px solid rgba(255,255,255,0.06);"> <i class="fa-brands fa-github"></i> GitHub</a>
+              <a class="btn btn-sm" href="#" style="background:transparent;border:1px solid rgba(255,255,255,0.06);"> <i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="bg-dark">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="row g-4">
+        <div class="col-md-6" data-aos="fade-up">
+          <div class="glass p-3">
+            <h5 class="mb-3">Core Languages & Frontend</h5>
+            <div class="mb-2"><div class="d-flex justify-content-between"><span class="skill-name">HTML</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+            <div class="mb-2"><div class="d-flex justify-content-between"><span class="skill-name">CSS / Bootstrap</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+            <div class="mb-2"><div class="d-flex justify-content-between"><span class="skill-name">JavaScript</span><span>70%</span></div><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+            <div class="mb-2"><div class="d-flex justify-content-between"><span class="skill-name">React (Basics)</span><span>60%</span></div><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
+          </div>
+        </div>
+
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="80">
+          <div class="glass p-3">
+            <h5 class="mb-3">Backend & Database</h5>
+            <div class="mb-2"><div class="d-flex justify-content-between"><span class="skill-name">PHP / CodeIgniter</span><span>75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+            <div class="mb-2"><div class="d-flex justify-content-between"><span class="skill-name">Java</span><span>60%</span></div><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
+            <div class="mb-2"><div class="d-flex justify-content-between"><span class="skill-name">SQL / MySQL</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+            <div class="mb-2"><div class="d-flex justify-content-between"><span class="skill-name">Node.js (Basics)</span><span>50%</span></div><div class="skill-bar"><div class="skill-fill" style="width:50%"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWS / DevOps -->
+  <section id="devops">
+    <div class="container">
+      <h2 class="section-title">AWS • DevOps • Cloud</h2>
+
+      <div class="row g-4">
+        <div class="col-lg-5" data-aos="fade-right">
+          <div class="glass p-4">
+            <h5><span class="badge-aws">AWS</span> Cloud & DevOps</h5>
+            <p>Experienced with deploying and maintaining applications on AWS and automating CI/CD pipelines for reliable releases.</p>
+            <ul class="devops-list">
+              <li><strong>Core AWS:</strong> EC2, S3, IAM, VPC, RDS, CloudWatch</li>
+              <li><strong>Infrastructure as Code:</strong> Terraform, CloudFormation</li>
+              <li><strong>CI/CD:</strong> Jenkins, GitHub Actions, AWS CodePipeline</li>
+              <li><strong>Containers & Orchestration:</strong> Docker, Kubernetes (K8s)</li>
+              <li><strong>Configuration Management:</strong> Ansible</li>
+              <li><strong>Monitoring & Logging:</strong> CloudWatch, ELK basics</li>
+              <li><strong>Other:</strong> Lambda, Serverless basics, Route53</li>
+            </ul>
+            <div class="mt-3">
+              <a class="btn btn-sm" href="#contact" style="border:1px solid rgba(255,255,255,0.06)">Discuss DevOps</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7" data-aos="fade-left">
+          <div class="glass p-4">
+            <h6>DevOps Skill Levels</h6>
+
+            <div class="row gy-3 mt-2">
+              <div class="col-sm-6">
+                <div class="mb-2"><div class="d-flex justify-content-between"><small>EC2 / S3 / IAM</small><small>85%</small></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+              </div>
+              <div class="col-sm-6">
+                <div class="mb-2"><div class="d-flex justify-content-between"><small>Terraform / IaC</small><small>70%</small></div><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="mb-2"><div class="d-flex justify-content-between"><small>Docker</small><small>75%</small></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+              </div>
+              <div class="col-sm-6">
+                <div class="mb-2"><div class="d-flex justify-content-between"><small>Kubernetes (Basics)</small><small>50%</small></div><div class="skill-bar"><div class="skill-fill" style="width:50%"></div></div></div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="mb-2"><div class="d-flex justify-content-between"><small>Jenkins / CI</small><small>65%</small></div><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
+              </div>
+              <div class="col-sm-6">
+                <div class="mb-2"><div class="d-flex justify-content-between"><small>Monitoring & Logging</small><small>60%</small></div><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="bg-dark">
+    <div class="container">
+      <h2 class="section-title">Selected Projects</h2>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="flip-left">
+          <div class="glass project-card p-3">
+            <h5>Vehicle Marketplace</h5>
+            <p class="small mb-2">Java | Spring Boot | Hibernate</p>
+            <p class="mb-0">A platform for buying and selling second-hand vehicles with search & filters.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="flip-left" data-aos-delay="80">
+          <div class="glass project-card p-3">
+            <h5>ServeDocs (DMS)</h5>
+            <p class="small mb-2">PHP | CodeIgniter | MySQL</p>
+            <p class="mb-0">Document management system with role-based access and versioning.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="flip-left" data-aos-delay="160">
+          <div class="glass project-card p-3">
+            <h5>MFA — Multi-Functional App</h5>
+            <p class="small mb-2">React | Node | MongoDB</p>
+            <p class="mb-0">Realtime features with sockets, scaling focus and modular architecture.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+
+      <div class="glass contact-card p-4" data-aos="fade-up">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Get in touch</h5>
+            <p>Email: <a href="mailto:vishalborhade3831@gmail.com" style="color:var(--accent)">vishalborhade3831@gmail.com</a></p>
+            <p>Phone: <a href="tel:+91112407590" style="color:var(--accent)">9112407590</a></p>
+            <p>Location: Pune, Maharashtra</p>
+            <div class="mt-3">
+              <a class="btn btn-sm" href="https://github.com/" target="_blank" style="border:1px solid rgba(255,255,255,0.06)"> <i class="fa-brands fa-github"></i> GitHub</a>
+              <a class="btn btn-sm" href="#" style="border:1px solid rgba(255,255,255,0.06)"> <i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <form id="contactForm">
+              <div class="mb-2">
+                <input class="form-control" type="text" placeholder="Your name" required>
+              </div>
+              <div class="mb-2">
+                <input class="form-control" type="email" placeholder="Your email" required>
+              </div>
+              <div class="mb-2">
+                <textarea class="form-control" rows="4" placeholder="Message" required></textarea>
+              </div>
+              <div class="d-grid">
+                <button class="btn" type="submit" style="background:linear-gradient(90deg,#00eaff,#0077ff); color:#001217; font-weight:700;">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <small>© 2025 Devanand Borhade • Built with ❤️ and a lot of coffee • Pune, India</small>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    AOS.init({ once:true, duration:800 });
+
+    // typing effect (simple)
+    const words = ["Jr. Software Developer", "Cloud / DevOps Explorer", "Backend • Frontend • Automation"];
+    let i=0, j=0, current="", isDeleting=false;
+    const el = document.getElementById('typing');
+
+    function type(){
+      if(!el) return;
+      const full = words[i];
+      if(isDeleting){
+        current = full.substring(0, current.length - 1);
+      } else {
+        current = full.substring(0, current.length + 1);
+      }
+      el.textContent = current;
+      let delay = isDeleting ? 60 : 120;
+      if(!isDeleting && current === full){ delay = 1200; isDeleting = true; }
+      else if(isDeleting && current === ""){ isDeleting = false; i = (i+1) % words.length; delay = 200; }
+      setTimeout(type, delay);
+    }
+    type();
+
+    // contact form: just prevent submit (no backend), show alert
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Thanks — message captured locally! (Add backend to actually send)');
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
